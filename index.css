@@ -1,0 +1,161 @@
+/* Default Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* Set all fonts in the body */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #777;
+    padding: 30px;
+}
+
+.header {
+    height: 95vh;
+    background-image: linear-gradient(to right bottom, rgba(69, 90, 100, 0.678), #1c313a50),
+     url("https://images.unsplash.com/photo-1493514789931-586cb221d7a7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80");
+     clip-path: polygon(0 1%, 100% 0%, 100% 74%, 0 88%);
+     /* Reference for logoBox */
+    position: relative;
+}
+
+/* Container that is holding the image */
+.logoBox {
+    position: absolute;
+    /* These attributes need a point of reference. This point of reference will be the header element that we set to pos: rel */
+    top: 40px;
+    left: 40px;
+}
+
+.logo {
+    height: 100px;
+    color: white;
+    /* width will automatically scale based off of the height. */
+}
+
+.textBox {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    /* shifts half of the elements width and height, thus centering the element */
+    transform: translate(-50%, -50%);
+    /* Since we set our btn to inline-block, it will be treated as text. thus, we can center it with text-align center */
+    text-align: center;
+}
+
+.headingPrimary {
+    color: #fff;
+    text-transform: uppercase;
+
+    /* this can be used to prevent shakyness with animations */
+    backface-visibility: hidden;
+    margin-bottom: 60px
+}
+
+.headingPrimaryMain {
+    display:block;
+    font-size: 60px;
+    font-weight: 400;
+    letter-spacing: 38px;
+
+    animation-name: moveInLeft;
+    animation-duration: 3s;
+}
+
+.headingPrimarySub {
+    display: block;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 15px;
+
+    /* animation-name: moveInRight;
+    animation-duration: 3s; */
+
+    /* short hand */
+
+    animation: moveInRight 3s .75s;
+    animation-fill-mode: backwards;
+    /* determines the speed of the animation, begin fast - end slow, begin slow - end fast */
+    /* animation-timing-function: ease-in; */
+    /* animation-iteration-count: 3; - repeat animation x times*/
+    /* animation-delay: 3s; - begin animation after x seconds*/
+}
+
+@keyframes moveInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px)
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes moveInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(100px)
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes moveInBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(30px)
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Pseudo class that states the button functions as an anchor link */
+/* link / visited - default: blue / purple */
+.btn:link,
+.btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 40px;
+    border-radius: 100px;
+    display: inline-block;
+    /* select all transitions w/ all */
+    transition: all 0.2s;
+    /* set this for the button after effect */
+    position: relative;
+}
+
+.btn:hover {
+    /* move up */
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,.4);
+}
+
+.btn:active {
+    transform: translateY(0);
+    box-shadow: 0 5px 10px rgba(0,0,0,.3);
+}
+
+.btnWhite {
+    background-color: #fff;
+    color: #777;
+}
+
+
+.btnAnimated {
+    animation: moveInBottom 1s ease-out 1.5s;
+    /* automatically apply 0% styles before animation starts */
+    animation-fill-mode: backwards;
+}
