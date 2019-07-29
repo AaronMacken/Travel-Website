@@ -1,0 +1,51 @@
+.row {
+  max-width: $grid-width;
+  background-color: #eee;
+  margin: 0 auto;
+  //   containing style will ge applied to everything except what we
+  // list in the params - in this case it is the last row
+  &:not(:last-child) {
+    margin-bottom: $gutter-vertical;
+  }
+
+  @include clearfix;
+
+  //   carron = (^="startWithValue") means select all attributes that start with values
+  // in between quotes
+  [class^="col-"] {
+    //   use the calc function to set the width to 100%
+    // minus the gutter sass variable (gap between cols) divided by 2
+    // must use #{sassVar here} syntax to get sass vars to work
+    background-color: orangered;
+    float: left;
+    &:not(:last-child) {
+      margin-right: $gutter-horizontal;
+    }
+  }
+
+  .col-1-of-2 {
+    width: calc((100% - #{$gutter-horizontal}) / 2);
+  }
+
+  .col-1-of-3 {
+    width: calc((100% - 2 * #{$gutter-horizontal}) / 3);
+  }
+
+  .col-1-of-4 {
+    width: calc((100% - 3 * #{$gutter-horizontal}) / 4);
+  }
+
+  .col-2-of-3 {
+    width: calc(2 * ((100% - 2 * #{$gutter-horizontal}) / 3) + #{$gutter-horizontal});
+  }
+
+  .col-2-of-4 {
+    width: calc(2 * ((100% - 3 * #{$gutter-horizontal}) / 4)
+    + #{$gutter-horizontal});
+  }
+
+  .col-3-of-4 {
+      width: calc(3 * ((100% - 3 * #{$gutter-horizontal}) / 4) + 
+      (2 * #{$gutter-horizontal}));
+  }
+}

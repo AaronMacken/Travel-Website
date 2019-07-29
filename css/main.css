@@ -40,13 +40,43 @@ html {
     This is a good practice to do incase users change the default font size. Very flexible */ }
 
 body {
+  box-sizing: border-box; }
+
+body {
   /* Set all fonts in the body */
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
   line-height: 1.7;
   color: #777;
-  padding: 3rem;
-  box-sizing: border-box; }
+  padding: 3rem; }
+
+.headingPrimary {
+  color: #fff;
+  text-transform: uppercase;
+  /* this can be used to prevent shakyness with animations */
+  backface-visibility: hidden;
+  margin-bottom: 6rem; }
+  .headingPrimary--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.8rem;
+    animation-name: moveInLeft;
+    animation-duration: 3s; }
+  .headingPrimary--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 400;
+    letter-spacing: 1.5rem;
+    /* animation-name: moveInRight;
+        animation-duration: 3s; */
+    /* short hand */
+    animation: moveInRight 3s 0.75s;
+    animation-fill-mode: backwards;
+    /* determines the speed of the animation, begin fast - end slow, begin slow - end fast */
+    /* animation-timing-function: ease-in; */
+    /* animation-iteration-count: 3; - repeat animation x times*/
+    /* animation-delay: 3s; - begin animation after x seconds*/ }
 
 .btn:link, .btn:visited {
   text-transform: uppercase;
@@ -102,84 +132,30 @@ body {
     /* Since we set our btn to inline-block, it will be treated as text. thus, we can center it with text-align center */
     text-align: center; }
 
-.headingPrimary {
-  color: #fff;
-  text-transform: uppercase;
-  /* this can be used to prevent shakyness with animations */
-  backface-visibility: hidden;
-  margin-bottom: 6rem; }
-  .headingPrimary--main {
-    display: block;
-    font-size: 6rem;
-    font-weight: 400;
-    letter-spacing: 3.8rem;
-    animation-name: moveInLeft;
-    animation-duration: 3s; }
-  .headingPrimary--sub {
-    display: block;
-    font-size: 2rem;
-    font-weight: 400;
-    letter-spacing: 1.5rem;
-    /* animation-name: moveInRight;
-      animation-duration: 3s; */
-    /* short hand */
-    animation: moveInRight 3s 0.75s;
-    animation-fill-mode: backwards;
-    /* determines the speed of the animation, begin fast - end slow, begin slow - end fast */
-    /* animation-timing-function: ease-in; */
-    /* animation-iteration-count: 3; - repeat animation x times*/
-    /* animation-delay: 3s; - begin animation after x seconds*/ }
-
-.btn:link, .btn:visited {
-  text-transform: uppercase;
-  text-decoration: none;
-  padding: 1.5rem 4rem;
-  border-radius: 10rem;
-  display: inline-block;
-  /* select all transitions w/ all */
-  transition: all 0.2s;
-  /* set this for the button after effect */
-  position: relative;
-  font-size: 1.6rem; }
-
-.btn:hover {
-  /* move up */
-  transform: translateY(-0.3rem);
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.4); }
-
-.btn:active {
-  transform: translateY(0);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3); }
-
-.btn--white {
-  background-color: #fff;
-  color: #777; }
-
-.btn--animated {
-  animation: moveInBottom 1s ease-out 1.5s;
-  /* automatically apply 0% styles before animation starts */
-  animation-fill-mode: backwards; }
-
-@keyframes moveInLeft {
-  0% {
-    opacity: 0;
-    transform: translateX(-10rem); }
-  100% {
-    opacity: 1;
-    transform: translateX(0); } }
-
-@keyframes moveInRight {
-  0% {
-    opacity: 0;
-    transform: translateX(10rem); }
-  100% {
-    opacity: 1;
-    transform: translateX(0); } }
-
-@keyframes moveInBottom {
-  0% {
-    opacity: 0;
-    transform: translateY(3rem); }
-  100% {
-    opacity: 1;
-    transform: translateY(0); } }
+.row {
+  max-width: 114rem;
+  background-color: #eee;
+  margin: 0 auto; }
+  .row:not(:last-child) {
+    margin-bottom: 8rem; }
+  .row::after {
+    content: "";
+    display: table;
+    clear: both; }
+  .row [class^="col-"] {
+    background-color: orangered;
+    float: left; }
+    .row [class^="col-"]:not(:last-child) {
+      margin-right: 6rem; }
+  .row .col-1-of-2 {
+    width: calc((100% - 6rem) / 2); }
+  .row .col-1-of-3 {
+    width: calc((100% - 2 * 6rem) / 3); }
+  .row .col-1-of-4 {
+    width: calc((100% - 3 * 6rem) / 4); }
+  .row .col-2-of-3 {
+    width: calc(2 * ((100% - 2 * 6rem) / 3) + 6rem); }
+  .row .col-2-of-4 {
+    width: calc(2 * ((100% - 3 * 6rem) / 4) + 6rem); }
+  .row .col-3-of-4 {
+    width: calc(3 * ((100% - 3 * 6rem) / 4) +  (2 * 6rem)); }

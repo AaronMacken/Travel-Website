@@ -1,0 +1,41 @@
+body {
+  /* Set all fonts in the body */
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  color: $color-grey-dark;
+  padding: 3rem;
+}
+
+.headingPrimary {
+  color: $color-white;
+  text-transform: uppercase;
+  /* this can be used to prevent shakyness with animations */
+  backface-visibility: hidden;
+  margin-bottom: 6rem;
+
+  &--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.8rem;
+    animation-name: moveInLeft;
+    animation-duration: 3s;
+  }
+
+  &--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 400;
+    letter-spacing: 1.5rem;
+    /* animation-name: moveInRight;
+        animation-duration: 3s; */
+    /* short hand */
+    animation: moveInRight 3s 0.75s;
+    animation-fill-mode: backwards;
+    /* determines the speed of the animation, begin fast - end slow, begin slow - end fast */
+    /* animation-timing-function: ease-in; */
+    /* animation-iteration-count: 3; - repeat animation x times*/
+    /* animation-delay: 3s; - begin animation after x seconds*/
+  }
+}
